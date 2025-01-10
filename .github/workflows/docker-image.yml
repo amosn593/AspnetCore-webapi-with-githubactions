@@ -15,4 +15,6 @@ jobs:
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag amosndonga/aspnetcorewebapiwithgithubactions:latest
       - name: Push Image to Docker Hub
-        run: docker push amosndonga/aspnetcorewebapiwithgithubactions:latest
+        run: |
+          docker login -u amosndonga -p ${{ secrets.DOCKERHUB_TOKEN }}
+          docker push amosndonga/aspnetcorewebapiwithgithubactions:latest
